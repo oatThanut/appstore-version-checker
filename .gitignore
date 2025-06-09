@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+.last_version
+data/.last_version
+.DS_Store
