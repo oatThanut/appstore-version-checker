@@ -1,13 +1,20 @@
-import requests
-from bs4 import BeautifulSoup
-import time
-import random
 import os
+import random
+import requests
+import time
+from bs4 import BeautifulSoup
 
-APP_ID = '1286637638'
-COUNTRY = 'th'
-SLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL')
-LAST_VERSION_FILE = '.last_version'
+def required_env(name):
+    value = os.getenv(name)
+    if not value:
+        print(f"[FATAL] Required environment variable '{name}' is missing.")
+        sys.exit(1)
+    return value
+
+APP_ID = required_env('APP_ID')
+COUNTRY = required_env('COUNTRY')
+LAST_VERSION_FILE = required_env('LAST_VERSION_FILE')
+SLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL') # Optional
 
 HEADERS = {
     'User-Agent': (

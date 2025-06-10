@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  version-checker:
+    build: .
+    container_name: appstore-version-checker
+    env_file: .env
+    volumes:
+      - ./data:/app
+    restart: unless-stopped
